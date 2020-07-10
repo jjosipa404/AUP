@@ -1,4 +1,4 @@
-Projekt kolegija Algoritmi u primjeni 2018/2019
+# Projekt kolegija Algoritmi u primjeni 2018/2019
 
 ŠIFRIRANJE TEKSTA
 
