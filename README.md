@@ -15,6 +15,7 @@ U ovom projektu na jednostavan način je prikazana implementacija tehnika zamjen
 
 Implementacija algoritama za šifriranje običnog teksta 
 1.	Keyword Cipher
+
 Ovo šifriranje je oblik monoalfabetske supstitucije. Ključna riječ se koristi kao ključ i određuje podudaranja slova šifrirane abecede s običnom abecedom. Uklanjaju se ponavljanja slova u riječi, zatim se šifrirajuća abeceda generira s podudaranjem ključne riječi s A, B, C itd. Sve dok se ne iskoristi ključna riječ, nakon čega se ostala šifrirana slova koriste abecednim redom, isključujući slova već u ključu.
 
 Abeceda: A B C D E G H I J K L M N O P R S T U V W X Y Z
@@ -36,6 +37,7 @@ o Razmak, posebni znakovi i brojevi ne uzimaju se u obzir u ključnoj riječi ia
 o Tijekom šifriranja poruke, razmaka, posebni znakovi i brojevi ostaju nepromijenjeni.
 	
 1.1.	Implementacija u projektu
+
 Napravljena je statička klasa KeywordCipher koja sadrži tri statičke metode: Encoder, CipherIt i DecipherIt. 
 Statička metoda Encoder prima kao parametar ključ koji je niz znakova (char[] key ). Ova metoda uzima ključ koji stavlja na početak abecede ( ako ima slova koja se ponavljaju onda ih ne zapisuje dvaput) te nadopuni abecedu preostalim slovima iz abecede koja nisu iz ključne riječi. Na primjer, ključna riječ je „GAME“, onda je rezultat ove metode: „GAMEBCDFHIJKLNOPQRSTUVWXYZ“:
 
@@ -151,8 +153,10 @@ Statička metoda DecipherIt prima kao parametre poruku za dešifriranje te kodir
         }
 
 2.	Vigenere Cipher
+
 Ova metoda je metoda šifriranja koja koristi jednostavan algoritam polialfabetske zamjene. Polialfabetska šifra je svaka šifra temeljena na zamjeni, a koja koristi višestruke zamjenske abecede. Šifriranje izvornog teksta se vrši korištenjem Vigenere-ovog kvadrata ili Vigenere-ove tablice. Tablica se sastoji od slova abecede zapisanih 26 puta u različitim redovima, svaka abeceda se ciklički pomiče ulijevo obzirom na prethodnu abecedu, što odgovara 26 mogućih Caesar šifri. Lakša implementacija bi bila vizualizirati Vigenère algebarski pretvaranjem [A-Z] u brojeve [0–25].
 2.1.	Implementacija u projektu
+
 Napravljena je statička klasa VigenereCipher koja sadrži tri statičke metode GenerateKey, Encription i Decryption.
 
 Statička metoda GenerateKey koja kao parametre prima početni tekst i ključ. Ova metoda generira ključ koji je iste duljine kao i početni tekst tako da ciklički ponavlja ključ sve dok nije iste duljine kao i tekst. Vraća generirani ključ iste duljine kao i tekst:
@@ -225,6 +229,7 @@ Statička metoda Decryption prima kao parametre šifrirani tekst i generirani kl
  
   
 3.	Ceasar Cipher
+
 Ova je metoda jedna od najstarijih i najjednostavnijih metoda šifriranja. To je jednostavan primjer tehnike zamjene, svako slovo teksta se zamjenjuje slovom s pozicije udaljene fiksni broj niz abecedu. Na primjer, s pomakom od 1, A se zamjenjuje s B, B sa C itd. Da bismo šifrirali dani tekst potrebna nam je cjelobrojna vrijednost, tj. pomak koji označava broj položaja za koji je svako slovo pomaknuto.
 
 Algoritam :
@@ -236,6 +241,7 @@ Postupak: Prolaziti zadani tekst po jedan znak. Za svaki znak transformirajte da
 Za dešifriranje možemo ili napisati još jednu funkciju šifriranja, koja će primijeniti danu promjenu u suprotnom smjeru za dešifriranje izvornog teksta, ili jednostavno koristiti istu funkciju, a promijeniti pomak tako da je pomak = 26 – pomak.
 
 3.1.	Implementacija u projektu
+
 Statička klasa CeasarCipher sadrži jednu statičku metodu Encrypt koja služi i za šifriranje i dešifriranje. Metoda prima kao parametre početni tekst i cjelobrojnu vrijednost pomaka. Ova metoda koristi formulu za pomicanje svakog slova abecede za isti pomak: X = ( M + S – 65(ili 97 za mala slova)) %26 + 65(ili 97 za mala slova):
  
  	public static string Encrypt(string text, int s)
@@ -271,10 +277,12 @@ Statička klasa CeasarCipher sadrži jednu statičku metodu Encrypt koja služi 
 Kod dešifriranja potrebno je samo metodi kao pomak poslati S = 26 – S.
 
 4.	XOR Cipher
+
 XOR šifriranje je način šifriranja kojim je teško probiti šifru Brute Force metodom tj. generirajući slučajne ključeve i provjeravati podudaraju li se s ispravnim ključem za dešifriranje. Koncept implementacije je prvo definirati XOR ključ za šifriranje, a zatim izvršiti XOR operaciju svakog znaka u tekstu sa ključem. Za dešifriranje šifriranih znakova moramo ponoviti XOR operaciju sa definiranim ključem.
 
 Osnovna ideja iza XOR šifriranja je da ako ne znate XOR ključ za šifriranje nemoguće je dešifrirati podatke. Na primjer, ako radite XOR operaciju nad dvije nepoznate varijable nemoguće je znati koji je rezultat. Ako imamo A XOR B, a rezultat je 1 tj. istina. Ako znamo jednu od varijabli onda znamo i drugu. Ako je A istina onda B treba biti laž ili ako je A laž onda B treba biti istina, prema tablici XOR operacije. Bez da znamo vrijednost jedne od varijabli ne možemo dešifrirati podatke.
 4.1.	Implementacija u projektu
+
 Korištena je statička klasa XORCipher koja sadrži jednu metodu za šifriranje i dešifriranje.
 
 Statička metoda EncryptDecrypt koja prima kao parametar početni tekst vraća šifrirani/dešifrirani tekst. Metoda koristi XOR ključ koji može biti bilo koji znak. Metoda obavlja XOR operaciju nad svakim znakom iz početnog teksta i XOR ključa:
@@ -309,8 +317,10 @@ Na Windows Formi klikom na botun Encrypt u varijablu ciphered sprema se šifrira
 Klikom na botun Decrypt ispisuje se na txtDecrypted rezultat iste metode kojoj smo sada poslali šifrirani tekst.
  
 5.	Šifriranje lozinki kod kreiranja korisničkog računa
+
 Jedan od primjera gdje se može koristiti šifriranje je kod spremanja podataka korisničkog računa u bazu podataka kojoj mogu na primjer pristupiti mnogi zaposlenici firme. U ovom projektu korišten je jednostavan način spremanja podataka u jednu tekstualnu datoteku. Prilikom spremanja podataka o korisniku u datoteku ne sprema se lozinka koju korisnik unese već njena šifrirana verzija. Prilikom korisnikova uvida u korisnički profil ( Log in ) dešifrira se lozinka pomoću ključne riječi kojom je i šifrirana. Na ovaj način omogućeno je da se bez poznavanja ključa za šifriranje ne može pristupiti podacima o lozinkama korisničkih profila.
 5.1.	Implementacija u projektu
+
 Ovdje je korišteno using System.Security.Cryptography, ugrađeno okruženje sa svim potrebnim klasama i metodama za enkripciju podataka.
 
 Prilikom spremanja podataka u tekstualnu datoteku lozinku je prije potrebno šifrirati:
