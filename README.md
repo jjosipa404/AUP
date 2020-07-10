@@ -1,8 +1,7 @@
-# AUP
-Projekt kolegija Algoritmi u primjeni 2018/2019
+#Projekt kolegija Algoritmi u primjeni 2018/2019
 
-ŠIFRIRANJE TEKSTA
-Plain Text to Cipher Text
+#ŠIFRIRANJE TEKSTA
+#Plain Text to Cipher Text
  
 Pretvaranje običnog teksta u šifrirani tekst
 Postoje dva osnovna načina na koji se obični tekst može modificirati kako bi se dobio šifrirani tekst: tehnika zamjene i tehnika prijenosa.
