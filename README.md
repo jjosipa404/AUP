@@ -155,6 +155,7 @@ Statička metoda DecipherIt prima kao parametre poruku za dešifriranje te kodir
 2.	Vigenere Cipher
 
 Ova metoda je metoda šifriranja koja koristi jednostavan algoritam polialfabetske zamjene. Polialfabetska šifra je svaka šifra temeljena na zamjeni, a koja koristi višestruke zamjenske abecede. Šifriranje izvornog teksta se vrši korištenjem Vigenere-ovog kvadrata ili Vigenere-ove tablice. Tablica se sastoji od slova abecede zapisanih 26 puta u različitim redovima, svaka abeceda se ciklički pomiče ulijevo obzirom na prethodnu abecedu, što odgovara 26 mogućih Caesar šifri. Lakša implementacija bi bila vizualizirati Vigenère algebarski pretvaranjem [A-Z] u brojeve [0–25].
+
 2.1.	Implementacija u projektu
 
 Napravljena je statička klasa VigenereCipher koja sadrži tri statičke metode GenerateKey, Encription i Decryption.
