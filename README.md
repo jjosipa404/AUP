@@ -1,39 +1,37 @@
 Projekt kolegija Algoritmi u primjeni 2018/2019
 
 ŠIFRIRANJE TEKSTA
+
 Plain Text to Cipher Text
- 
-Pretvaranje običnog teksta u šifrirani tekst
+
 Postoje dva osnovna načina na koji se obični tekst može modificirati kako bi se dobio šifrirani tekst: tehnika zamjene i tehnika prijenosa.
 1.	Tehnika zamjene ( eng. Substitution Technique )
-Tehnika zamjene uključuje zamjenu slova drugim slovima i simbolima. Na jednostavniji način zamjenjuju se znakovi običnog teksta, a umjesto njih se koriste drugi zamjenski znakovi, brojevi i simboli. Vrste tehnike zamjene:
-o	Caesar Cipher 
-o	Mono Alphabetic Cipher
-o	Homophonic Substitution Cipher
-o	Polygram Substitution Cipher
-o	Vigenere Cipher
-o	Keyword Cipher
-o	XOR Cipher
+Tehnika zamjene uključuje zamjenu slova drugim slovima i simbolima. Na jednostavniji način zamjenjuju se znakovi običnog teksta, a umjesto njih se koriste drugi zamjenski znakovi, brojevi i simboli. Vrste tehnike zamjene: Caesar Cipher, Mono Alphabetic Cipher, Homophonic Substitution Cipher, Polygram Substitution Cipher, Vigenere Cipher, Keyword Cipher, XOR Cipher
 2.	Tehnika prijenosa (eng. Transposition Technique )
-U tehnici prijenosa identitet znakova ostaje nepromijenjen, ali se njihovi položaji mijenjaju kako bi se stvorio šifrirani tekst. Vrste tehnike prijenosa:
-o	Rail Fence Technique
-o	Simple Columnar Transposition Technique
-o	Vernam Cipher
+U tehnici prijenosa identitet znakova ostaje nepromijenjen, ali se njihovi položaji mijenjaju kako bi se stvorio šifrirani tekst. Vrste tehnike prijenosa: Rail Fence Technique, Simple Columnar Transposition Technique, Vernam Cipher
+
 U ovom projektu na jednostavan način je prikazana implementacija tehnika zamjene: Keyword Cipher, Caesare Cipher, Vigenere Cipher i XOR Cipher. Također je prikazan primjer upotrebe ugrađenih klasa i metoda korištenjem System.Security.Cryptography prilikom šifriranja korisničkih lozinki.
 
 
 Implementacija algoritama za šifriranje običnog teksta 
 1.	Keyword Cipher
 Ovo šifriranje je oblik monoalfabetske supstitucije. Ključna riječ se koristi kao ključ i određuje podudaranja slova šifrirane abecede s običnom abecedom. Uklanjaju se ponavljanja slova u riječi, zatim se šifrirajuća abeceda generira s podudaranjem ključne riječi s A, B, C itd. Sve dok se ne iskoristi ključna riječ, nakon čega se ostala šifrirana slova koriste abecednim redom, isključujući slova već u ključu.
+
 Abeceda: A B C D E G H I J K L M N O P R S T U V W X Y Z
+
 Šifrirano: K R Y P T O S A B C D E G H I J L M N Q U V W X Z
+
 Uz KRYPTOS kao ključnu riječ, svako A postaje K, svako B postaje R i tako dalje.
+
 Poruka: "KNOWLEDGE"
+
 Kodirana poruka: IlmWjbaEb
+
 Da biste dekodirali poruku, provjerite položaj određene poruke kodiranjem teksta s običnim tekstom. Kako generiramo dešifrirani niz? Tražimo "P" u šifriranom tekstu i uspoređujemo njegovu poziciju s tekstom običnog teksta i generiramo to slovo. Dakle, "P" postaje "D", "T" postaje "E", "Y" postaje "C" i tako dalje.
-  o	Sve su poruke kodirane velikim slovima.
-  o	Razmak, posebni znakovi i brojevi ne uzimaju se u obzir u ključnoj riječi iako ih možete staviti tamo.
-  o	Tijekom šifriranja poruke, razmaka, posebni znakovi i brojevi ostaju nepromijenjeni.
+	o	Sve su poruke kodirane velikim slovima.
+	o	Razmak, posebni znakovi i brojevi ne uzimaju se u obzir u ključnoj riječi iako ih možete staviti tamo.
+	o	Tijekom šifriranja poruke, razmaka, posebni znakovi i brojevi ostaju nepromijenjeni.
+	
 1.1.	Implementacija u projektu
 Napravljena je statička klasa KeywordCipher koja sadrži tri statičke metode: Encoder, CipherIt i DecipherIt. 
 Statička metoda Encoder prima kao parametar ključ koji je niz znakova (char[] key ). Ova metoda uzima ključ koji stavlja na početak abecede ( ako ima slova koja se ponavljaju onda ih ne zapisuje dvaput) te nadopuni abecedu preostalim slovima iz abecede koja nisu iz ključne riječi. Na primjer, ključna riječ je „GAME“, onda je rezultat ove metode: „GAMEBCDFHIJKLNOPQRSTUVWXYZ“:
