@@ -38,6 +38,8 @@ o Tijekom šifriranja poruke, razmaka, posebni znakovi i brojevi ostaju nepromij
 	
 1.1.	Implementacija u projektu
 
+![GitHub Logo](https://github.com/jjosipa404/AUP/blob/master/Screenshots/keyword.PNG)
+
 Napravljena je statička klasa KeywordCipher koja sadrži tri statičke metode: Encoder, CipherIt i DecipherIt. 
 Statička metoda Encoder prima kao parametar ključ koji je niz znakova (char[] key ). Ova metoda uzima ključ koji stavlja na početak abecede ( ako ima slova koja se ponavljaju onda ih ne zapisuje dvaput) te nadopuni abecedu preostalim slovima iz abecede koja nisu iz ključne riječi. Na primjer, ključna riječ je „GAME“, onda je rezultat ove metode: „GAMEBCDFHIJKLNOPQRSTUVWXYZ“:
 
@@ -158,6 +160,8 @@ Ova metoda je metoda šifriranja koja koristi jednostavan algoritam polialfabets
 
 2.1.	Implementacija u projektu
 
+![GitHub Logo](https://github.com/jjosipa404/AUP/blob/master/Screenshots/vigenere.PNG)
+
 Napravljena je statička klasa VigenereCipher koja sadrži tri statičke metode GenerateKey, Encription i Decryption.
 
 Statička metoda GenerateKey koja kao parametre prima početni tekst i ključ. Ova metoda generira ključ koji je iste duljine kao i početni tekst tako da ciklički ponavlja ključ sve dok nije iste duljine kao i tekst. Vraća generirani ključ iste duljine kao i tekst:
@@ -243,6 +247,8 @@ Za dešifriranje možemo ili napisati još jednu funkciju šifriranja, koja će 
 
 3.1.	Implementacija u projektu
 
+![GitHub Logo](https://github.com/jjosipa404/AUP/blob/master/Screenshots/ceasar.PNG)
+
 Statička klasa CeasarCipher sadrži jednu statičku metodu Encrypt koja služi i za šifriranje i dešifriranje. Metoda prima kao parametre početni tekst i cjelobrojnu vrijednost pomaka. Ova metoda koristi formulu za pomicanje svakog slova abecede za isti pomak: X = ( M + S – 65(ili 97 za mala slova)) %26 + 65(ili 97 za mala slova):
  
  	public static string Encrypt(string text, int s)
@@ -282,7 +288,10 @@ Kod dešifriranja potrebno je samo metodi kao pomak poslati S = 26 – S.
 XOR šifriranje je način šifriranja kojim je teško probiti šifru Brute Force metodom tj. generirajući slučajne ključeve i provjeravati podudaraju li se s ispravnim ključem za dešifriranje. Koncept implementacije je prvo definirati XOR ključ za šifriranje, a zatim izvršiti XOR operaciju svakog znaka u tekstu sa ključem. Za dešifriranje šifriranih znakova moramo ponoviti XOR operaciju sa definiranim ključem.
 
 Osnovna ideja iza XOR šifriranja je da ako ne znate XOR ključ za šifriranje nemoguće je dešifrirati podatke. Na primjer, ako radite XOR operaciju nad dvije nepoznate varijable nemoguće je znati koji je rezultat. Ako imamo A XOR B, a rezultat je 1 tj. istina. Ako znamo jednu od varijabli onda znamo i drugu. Ako je A istina onda B treba biti laž ili ako je A laž onda B treba biti istina, prema tablici XOR operacije. Bez da znamo vrijednost jedne od varijabli ne možemo dešifrirati podatke.
+
 4.1.	Implementacija u projektu
+
+![GitHub Logo](https://github.com/jjosipa404/AUP/blob/master/Screenshots/xor.PNG)
 
 Korištena je statička klasa XORCipher koja sadrži jednu metodu za šifriranje i dešifriranje.
 
@@ -324,6 +333,8 @@ Jedan od primjera gdje se može koristiti šifriranje je kod spremanja podataka 
 
 Ovdje je korišteno using System.Security.Cryptography, ugrađeno okruženje sa svim potrebnim klasama i metodama za enkripciju podataka.
 
+![GitHub Logo](https://github.com/jjosipa404/AUP/blob/master/Screenshots/signup.PNG)
+
 Prilikom spremanja podataka u tekstualnu datoteku lozinku je prije potrebno šifrirati:
                     
 		    string pass = "";
@@ -341,7 +352,11 @@ Prilikom spremanja podataka u tekstualnu datoteku lozinku je prije potrebno šif
                             pass = Convert.ToBase64String(result, 0, result.Length);
                         }
                     }
-                
+
+![GitHub Logo](https://github.com/jjosipa404/AUP/blob/master/Screenshots/data.PNG)
+               
+![GitHub Logo](https://github.com/jjosipa404/AUP/blob/master/Screenshots/login.PNG)		
+		
 Prilikom čitanja iz datoteke lozinka se dešifrira istim ključem (string hash) kojim je i šifrirana:
   
   				    string hash = "pr0gr@m";//ključna riječ za šifriranje i dešifriranje
